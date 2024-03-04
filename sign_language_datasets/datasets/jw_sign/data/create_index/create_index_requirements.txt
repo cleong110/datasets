@@ -1,0 +1,6 @@
+pandas
+requests-html
+
+# for ffprobe. May not be needed to install the pip. NOTE: on Windows you may need to install this manually, e.g. via winget install ffmpeg
+# ffmpeg
+
