@@ -46,11 +46,15 @@ class JWSign(tfds.core.GeneratorBasedBuilder):
   def _split_generators(self, dl_manager: tfds.download.DownloadManager):
     """Returns SplitGenerators."""
     # TODO(new_dataset): Downloads the data and defines the splits
+    # TODO: Colin, make sure to read the _SPOKEN_LANG_TEXT_FILE_DOWNLOAD_URLS_JSON to download a file and get the verses out, 
+    # you can just do en_text.json to start, and it's not compressed. 
+    # you can literally pass a dict to dl_manager.download
 
     text_download_resource = tfds.download.Resource(self._TEXT_URL, extract_method=tfds.download.ExtractMethod.GZIP)
-    path = dl_manager.download_and_extract(self._TEXT_URL)
+    path = dl_manager.download(self._TEXT_URL)
 
     # TODO(new_dataset): Returns the Dict[split names, Iterator[Key, Example]]
+    # TODO: Colin, you can get the splits at splits\jw_sign_splits.json
     return {
         'train': self._generate_examples(path / 'train_imgs'),
     }
